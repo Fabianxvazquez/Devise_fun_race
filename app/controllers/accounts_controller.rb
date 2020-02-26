@@ -12,13 +12,15 @@ class AccountsController < ApplicationController
     @account = Account.new
   end
 
-  def create
+  def create 
     @account = current_user.accounts.new(account_params)
-    if @account.save
-      redirect_to accounts_path
-    else
-      render :new
-    end
+      if @account.save
+        flash[:success] = "Account Created"
+        redirect_to accounts_path
+      else
+        flash[:error] = "Error #{@account.errors.full_messages.join('\n')}"
+        render :new
+      end
   end
 
   def edit

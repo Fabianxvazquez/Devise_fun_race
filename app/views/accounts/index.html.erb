@@ -1,12 +1,12 @@
-<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-<h2>Welcome <%= current_user.first_name %></h2>
-<hr />
-<%= link_to "Add Account", new_account_path %>
-<h3>Your Account</h3>
+<h1>Accounts</h1>
+Name <%= current_user.first_name %>
+<hr>
+
+<h1> Accounts </h1>
+<%= link_to "New Account", new_account_path %>
 <ul>
-  <% @accounts.each do |account| %>
-    <li>
-      <%= a.name %> <%= a.age %>
-    </li>
-  <% end %>
+<% @accounts.each do |account| %>
+  <%= "#{account.name} age #{account.age}" %>
+<%end%>
 </ul>
+<%= button_to "Log out", destroy_user_session_path, method: :delete%>
